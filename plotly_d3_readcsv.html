@@ -14,33 +14,37 @@
         Let's make some plotly charts.
     </div>
     <div id="tester" style="width:600px;height:250px;"></div>
-    <div>This is below the chart.</div>
 
     <script>
         var d3 = Plotly.d3;
+        // now we are using d3 to read in a csv, notice the different structure of the code
         d3.csv('umzug_pivot.csv', function(data){
             //console.log(data);   
             plotly_plot(data);
         })
 
         function plotly_plot(csvdata){
-            var x0 = csvdata[0]
-            console.log(x0)
-            console.log(x0['Kreis 1'])
-            console.log(Object.keys(x0))
-            console.log(csvdata.filter(function(el){
-                return el['Kreis']    
-                }))
+            //to understand the keys and values, experiment and look in the console!
+            //var x0 = csvdata[0]
+            //console.log(x0)
+            //console.log(x0['Kreis 1'])
+            //console.log(Object.keys(x0))
+            sel_kreis = 'Kreis 10'
+            var x0 = csvdata.filter(function(el){
+                return el['KreisBisherCd'] == sel_kreis
+                })[0]; //why [0] -> filter creates a list
+            delete x0['KreisBisherCd'];
+            console.log(x0);            
             var data = [
                 {
-                x: ['giraffes', 'orangutans', 'monkeys'],
-                y: [20, 14, 23],
+                x: Object.keys(x0),
+                y: Object.values(x0),
                 type: 'bar'
                 }
             ];
 
             var  layout = {
-                title:'My Beautiful Chart'             
+                title:'Relocations in '+sel_kreis             
             };
         
             
