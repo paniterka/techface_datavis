@@ -19,6 +19,9 @@ Events:
 https://plotly.com/javascript/hover-events/ 
 https://plotly.com/javascript/plotlyjs-events/ 
 
+Intro
+https://plotly.com/javascript/getting-started/ 
+
 
 # Other resources 
 Navigating the world of js libraries 
