@@ -1,0 +1,37 @@
+<head>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        Let's make some plotly charts.
+    </div>
+    <div id="tester" style="width:600px;height:250px;"></div>
+    <div>This is below the chart.</div>
+
+    <script>
+        {{/*  Needs to be below the div  */}}
+        var data = [
+            {
+              x: ['giraffes', 'orangutans', 'monkeys'],
+              y: [20, 14, 23],
+              type: 'bar'
+            }
+          ];
+
+        var  layout = {
+            title:'My Beautiful Chart'             
+         };
+    
+          
+          Plotly.newPlot('tester', data, layout);
+    </script>
+
+</body>

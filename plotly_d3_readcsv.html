@@ -1,0 +1,51 @@
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        Let's make some plotly charts.
+    </div>
+    <div id="tester" style="width:600px;height:250px;"></div>
+    <div>This is below the chart.</div>
+
+    <script>
+        var d3 = Plotly.d3;
+        d3.csv('umzug_pivot.csv', function(data){
+            //console.log(data);   
+            plotly_plot(data);
+        })
+
+        function plotly_plot(csvdata){
+            var x0 = csvdata[0]
+            console.log(x0)
+            console.log(x0['Kreis 1'])
+            console.log(Object.keys(x0))
+            console.log(csvdata.filter(function(el){
+                return el['Kreis']    
+                }))
+            var data = [
+                {
+                x: ['giraffes', 'orangutans', 'monkeys'],
+                y: [20, 14, 23],
+                type: 'bar'
+                }
+            ];
+
+            var  layout = {
+                title:'My Beautiful Chart'             
+            };
+        
+            
+            Plotly.newPlot('tester', data, layout);
+        }
+    </script>
+
+</body>

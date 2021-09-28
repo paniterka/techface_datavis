@@ -1,0 +1,19 @@
+<body>
+    <div> Use img tag: </div>
+    <img src="viz.svg" />
+    <div> Use object: </div>
+    <object data="viz.svg" id="svg_div"> </object>
+    <script>
+        // snippet to access single elements from the svg 
+        var sd = document.getElementById("svg_div");
+        sd.addEventListener("load",function(){
+            var svgDoc = sd.contentDocument;
+            console.log(svgDoc)
+            var bg = svgDoc.getElementById("backgorund")
+            console.log(bg)
+        }, false);
+
+    </script>
+
+
+</body>

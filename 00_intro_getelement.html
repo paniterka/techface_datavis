@@ -1,0 +1,28 @@
+<head>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        Let's make some plotly charts.
+    </div>
+    <div id="tester" style="width:600px;height:250px;"></div>
+    <div>This is below the chart.</div>
+
+    <script>
+        {{/*  Needs to be below the div  */}}
+        TESTER = document.getElementById('tester');
+        Plotly.newPlot( TESTER, [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16] }], {
+        margin: { t: 0 } } );
+    </script>
+
+</body>

@@ -1,0 +1,26 @@
+Plotly Exercises: 
+- create a div, initiate a chart in it 
+    - pre-select element, or call the id of the div 
+- events 
+    - manipulate div text on hover 
+    - update chart styling on click 
+- plotting more than one trace 
+- customizing the chart looks 
+    - gridlines 
+    - font size 
+    - legend - on click 
+- customize the contents of the toolbar 
+    - remove buttons
+    - custom button 
+- svg vs webgl 
+- custom hovertext 
+    - adding additional data to the datapoints and including it in the hovertemplate  
+- accessing d3 from plotly for customs stuff 
+- responsive -> config 
+- crosshair 
+- two charts aside 
+- annotations 
+- selecting, selecting events 
+- export png, dpi 
+- sliders, buttons 
+- plotly and statistical calculations 

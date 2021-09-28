@@ -1,0 +1,90 @@
+<head>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+    <!--  https://codepen.io/etpinard/pen/RQQqzq?editors=0010  
+    https://plotly.com/javascript/hover-events/  --> 
+
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        Let's make some plotly charts.
+    </div>
+    <div id="plotly_div" style="width:600px;height:250px;"></div>
+    <div id="plotly_hover_div">This will be changed on hover.</div>
+    <div id="data_div">Here you will find clicked values.</div>
+
+
+    <script>
+        //  Needs to be below the div 
+
+        var trace_data = [
+            {
+              x: ['giraffes', 'orangutans', 'monkeys'],
+              y: [20, 14, 23],
+              type: 'bar',
+              marker: {
+                 color:[]}
+            }
+          ];
+          
+        trace_data[0].marker.color = trace_data[0].y.map(function (v) {
+            return v < 15 ? 'red' : 'blue'
+        });  
+
+          var  layout = {
+            title: 'My Beautiful Chart'
+         };
+         
+
+
+         plot = document.getElementById("plotly_div");
+         info_div = document.getElementById("plotly_hover_div")
+          
+        Plotly.newPlot(plot, trace_data, layout);
+          
+        plot.on('plotly_hover', function(data){
+            console.log(data)
+            var xval = data.points[0].x
+            var yval = data.points[0].y
+            //console.log(xval)
+            plotly_hover_div.innerHTML = "Hovering on datapoint: "+xval+", "+yval
+
+        })
+        .on("plotly_unhover", function(data){
+            plotly_hover_div.innerHTML = "mouse out"                
+        })
+        .on("plotly_click", function(data){
+            console.log("click!")
+            var pn='',
+            tn='',
+            colors=[];
+
+            for(var i=0; i < data.points.length; i++){
+                pn = data.points[i].pointNumber;
+                tn = data.points[i].curveNumber;
+                colors = data.points[i].fullData.marker.color;
+            };
+            colors[pn] = 'green';
+            console.log(pn)
+
+            data_div.innerHTML = "clicked on point number: "+pn+", trace number: "+tn
+        
+            var update = {'marker':{color: colors}};
+            console.log(update)
+            Plotly.restyle('plotly_div', update, [tn]);
+            console.log(trace_data)
+            // notice that the trace_data got overwritten! So we need to store the initial colors in a variable 
+            // store the if_clicked in a toggle to make it be selected back and forth 
+
+
+        })
+    </script>
+
+</body>

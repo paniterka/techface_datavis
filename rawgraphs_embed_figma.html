@@ -1,0 +1,17 @@
+<body>
+    <div> Use object: </div>
+    <object data="viz_figma.svg" id="svg_div"> </object>
+    <script>
+        // snippet to access single elements from the svg 
+        var sd = document.getElementById("svg_div");
+        sd.addEventListener("load",function(){
+            var svgDoc = sd.contentDocument;
+            //console.log(svgDoc)
+            var sel = svgDoc.getElementById("selected")
+            sel.setAttribute("fill", "red");
+        }, false);
+        console.log(sel) // sel is only accessible inside the event listener
+    </script>
+
+
+</body>

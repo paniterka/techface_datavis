@@ -1,0 +1,55 @@
+<head>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+    <!--  https://codepen.io/etpinard/pen/RQQqzq?editors=0010  
+    https://plotly.com/javascript/hover-events/  --> 
+
+    <div>
+        <h1>Hello!</h1>
+    </div>
+    <div>
+        Let's make some plotly charts.
+    </div>
+    <div id="plotly_div" style="width:600px;height:250px;"></div>
+    <div id="plotly_hover_div">This will be changed on hover.</div>
+
+    <script>
+        {{/*  Needs to be below the div  */}}
+        var data = [
+            {
+              x: ['giraffes', 'orangutans', 'monkeys'],
+              y: [20, 14, 23],
+              type: 'bar'
+            }
+          ];
+
+          var  layout = {
+            title:'My Beautiful Chart'
+         };
+         
+         plot = document.getElementById("plotly_div");
+         info_div = document.getElementById("plotly_hover_div")
+          
+        Plotly.newPlot(plot, data, layout);
+          
+        plot.on('plotly_hover', function(data){
+            //console.log(data)
+            var xval = data.points[0].x
+            var yval = data.points[0].y
+            console.log(typeof yval)
+            //console.log(xval)
+            plotly_hover_div.innerHTML = "Hovering on datapoint: "+xval+", "+yval // this is automatically converting num->str
+
+        })
+        .on("plotly_unhover", function(data){
+            plotly_hover_div.innerHTML = "mouse out"                
+        })
+    </script>
+
+</body>
