@@ -31,6 +31,19 @@
           var layout = {
             grid: {rows: 1, columns: 2, pattern: 'independent'},
           };
+
+          // alternative layout with custom placement: 
+          var layout2 = {
+            yaxis2: {
+              domain: [0.6, 0.95],
+              anchor: 'x2'
+            },
+            xaxis2: {
+              domain: [0.6, 0.95],
+              anchor: 'y2'
+            }
+          };
+          
           Plotly.newPlot('tester', data, layout);
     </script>
 
